@@ -24,3 +24,24 @@ def test_all(fix_item_class):
     assert type(fix_item_class.all) is list
     assert bool(fix_item_class.all) is True
 
+
+def test_instantiate_from_csv():
+    """класс-метод инициализирует экземпляры из файла csv"""
+    Item.instantiate_from_csv()  # создание объектов из данных файла
+    assert len(Item.all) == 5
+
+
+def test_string_to_number():
+    """возвращает число из числа-строки"""
+    assert Item.string_to_number('5') == 5
+    assert Item.string_to_number('5.0') == 5
+    assert Item.string_to_number('5.5') == 5
+
+
+def test_name(fix_item_class):
+    """перезаписывает приватный атрибут name, сокращает строку до 10 символов"""
+    item = fix_item_class
+    item.name = 'Телефон'
+    assert item.name == 'Телефон'
+    item.name = 'СуперСмартфон'
+    assert item.name == 'СуперСмарт'
