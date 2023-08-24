@@ -15,8 +15,21 @@ class Item:
         """
         self.quantity = quantity
         self.price = price
-        self.name = name
+        self.__name = name
         self.all.append(self)
+
+    @property
+    def name(self):
+        """Возвращает имя"""
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        """Обрезает имя, если оно больше 10 символов"""
+        if len(name) > 10:
+            self.__name = name[0:10]
+        else:
+            self.__name = name
 
     def calculate_total_price(self) -> float:
         """
@@ -31,4 +44,3 @@ class Item:
         Применяет установленную скидку для конкретного товара.
         """
         self.price *= self.pay_rate
-
