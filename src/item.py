@@ -1,9 +1,28 @@
+import csv
+import os
+
+
 class Item:
     """
     Класс для представления товара в магазине.
     """
     pay_rate = 1.0
     all = []
+    CSV_PATH = os.path.join("src", "items.csv")  # путь к csv-файлу
+
+    @classmethod
+    def instantiate_from_csv(cls):
+        """класс-метод, инициализирующий экземпляры класса Item данными из файла src/items.csv"""
+        with open(cls.CSV_PATH, encoding='cp1251') as file:
+            reader = csv.DictReader(file)
+            cls.all.clear()
+            for line in reader:
+                item = cls(line['name'], float(line['price']), int(line['quantity']))
+
+    @staticmethod
+    def string_to_number(string):
+        """статический метод, возвращающий число из числа-строки"""
+        return int(float(string))
 
     def __init__(self, name: str, price: float, quantity: int) -> None:
         """
