@@ -37,6 +37,14 @@ class Item:
         self.__name = name
         self.all.append(self)
 
+    def __repr__(self):
+        """отображение информации об объекте класса в режиме отладки"""
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        """отображение информации об объекте класса для пользователей"""
+        return f"{self.__name}"
+
     @property
     def name(self):
         """Возвращает имя"""

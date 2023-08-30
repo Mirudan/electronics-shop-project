@@ -45,3 +45,13 @@ def test_name(fix_item_class):
     assert item.name == 'Телефон'
     item.name = 'СуперСмартфон'
     assert item.name == 'СуперСмарт'
+
+
+def test_repr(fix_item_class):
+    """тест repr"""
+    assert repr(fix_item_class) == "Item('Смартфон', 10000, 20)"
+
+
+def test_str(fix_item_class):
+    """тест str"""
+    assert str(fix_item_class) == 'Смартфон'
