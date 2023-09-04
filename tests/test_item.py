@@ -1,10 +1,16 @@
 import pytest
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
 def fix_item_class():
     return Item("Смартфон", 10000, 20)
+
+
+@pytest.fixture
+def fix_phone_class():
+    return Phone("iPhone 14", 120_000, 5, 2)
 
 
 def test_calculate_total_price(fix_item_class):
@@ -55,3 +61,12 @@ def test_repr(fix_item_class):
 def test_str(fix_item_class):
     """тест str"""
     assert str(fix_item_class) == 'Смартфон'
+
+
+def test_add(fix_item_class, fix_phone_class):
+    """тест сложения родственных классов"""
+    assert fix_item_class + fix_phone_class == 25
+    assert fix_phone_class + fix_phone_class == 10
+    with pytest.raises(ValueError):
+        assert fix_phone_class + 5 == 'Складывать можно только объекты Item и дочерние от них.'
+        assert fix_item_class + 5 == 'Складывать можно только объекты Item и дочерние от них.'

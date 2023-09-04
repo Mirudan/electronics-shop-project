@@ -48,7 +48,7 @@ class Item:
     def __add__(self, other):
         """складываем только экземпляры класса Item и его дочерних классов"""
         if not issubclass(other.__class__, self.__class__):
-            raise ValueError('Складывать можно только объекты Employee и дочерние от них.')
+            raise ValueError('Складывать можно только объекты Item и дочерние от них.')
         return self.quantity + other.quantity
 
     @property
