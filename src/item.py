@@ -45,6 +45,12 @@ class Item:
         """отображение информации об объекте класса для пользователей"""
         return f"{self.__name}"
 
+    def __add__(self, other):
+        """складываем только экземпляры класса Item и его дочерних классов"""
+        if not issubclass(other.__class__, self.__class__):
+            raise ValueError('Складывать можно только объекты Employee и дочерние от них.')
+        return self.quantity + other.quantity
+
     @property
     def name(self):
         """Возвращает имя"""
