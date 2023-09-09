@@ -24,4 +24,7 @@ class MixinLang:
 
 class Keyboard(Item, MixinLang):
     """класс для представления клавиатуры в магазине, дочерний класс Item """
-    ...
+
+    def __init__(self, name: str, price: float, quantity: int, language: str = 'EN'):
+        super().__init__(name, price, quantity)
+        MixinLang.__init__(self, language)
