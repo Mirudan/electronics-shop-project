@@ -15,6 +15,9 @@ def test_number_of_sim(fix_phone_class):
     with pytest.raises(ValueError):
         fix_phone_class.number_of_sim = 0
         assert fix_phone_class.number_of_sim == "Количество физических SIM-карт должно быть целым числом больше нуля."
+    with pytest.raises(ValueError):
+        phone = Phone("iPhone 14", 120_000, 5, -1.5)
+        assert phone == "Количество физических SIM-карт должно быть целым числом больше нуля."
 
 
 def test_repr_str(fix_phone_class):

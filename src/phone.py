@@ -6,7 +6,10 @@ class Phone(Item):
     def __init__(self, name: str, price: float, quantity: int, number_of_sim: int):
         super().__init__(name, price, quantity)
         """Инициализация класса с использованием атрибутов родительского класса и добавлением нового атрибута"""
-        self.__number_of_sim = number_of_sim
+        if number_of_sim <= 0 or type(number_of_sim) is not int:
+            raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля.")
+        else:
+            self.__number_of_sim = number_of_sim
 
     def __repr__(self):
         """отображение информации об объекте класса в режиме отладки"""
