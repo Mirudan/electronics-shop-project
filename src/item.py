@@ -10,7 +10,7 @@ class Item:
     """
     pay_rate = 1.0
     all = []
-    CSV_PATH = os.path.join(os.path.dirname(__file__), "item.csv")  # путь к csv-файлу
+    CSV_PATH = os.path.join(os.path.dirname(__file__), "items.csv")  # путь к csv-файлу
 
     @classmethod
     def instantiate_from_csv(cls):
@@ -24,8 +24,8 @@ class Item:
                 cls.all.clear()
                 for line in reader:
                     item = cls(line['name'], float(line['price']), int(line['quantity']))
-        except KeyError:
-            raise InstantiateCSVError(f"Файл {Path(cls.CSV_PATH).name} поврежден")
+        except (KeyError, TypeError):
+            raise InstantiateCSVError(f"Файл {Path(cls.CSV_PATH).name} поврежден, ошибка в {line}")
 
     @staticmethod
     def string_to_number(string):
