@@ -25,7 +25,7 @@ class Item:
                 for line in reader:
                     item = cls(line['name'], float(line['price']), int(line['quantity']))
         except (KeyError, TypeError):
-            raise InstantiateCSVError(f"Файл {Path(cls.CSV_PATH).name} поврежден, ошибка в {line}")
+            raise InstantiateCSVError(f"Файл {Path(cls.CSV_PATH).name} поврежден")
 
     @staticmethod
     def string_to_number(string):

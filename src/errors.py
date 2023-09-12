@@ -5,4 +5,4 @@ class InstantiateCSVError(Exception):
         if len(args) > 0:
             self.message = args[0]
         else:
-            self.message = "Файл items.csv поврежден"
+            self.message = "Файл поврежден"

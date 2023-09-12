@@ -43,7 +43,7 @@ def test_instantiate_from_csv():
         {'name': 'item_3', 'price': '3.0', 'quantity': '3'}
     ]
 
-    # временный csv файл с помощью модуля csv
+    # создаём временный csv файл с помощью модуля csv
     with open('test.csv', 'w', encoding='cp1251', newline='') as file:
         fieldnames = ['name', 'price', 'quantity']
         writer = csv.DictWriter(file, fieldnames=fieldnames)
